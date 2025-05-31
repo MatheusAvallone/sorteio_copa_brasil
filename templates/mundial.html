@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Mundial de Clubes FIFA 2025</title>
+    <link rel="stylesheet" href="/static/css/mundial.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">Sorteios & Simuladores</a>
+            <ul class="navbar-links">
+                <li><a href="/">Copa do Brasil/Libertadores</a></li>
+                <li><a href="/mundial">Mundial de Clubes</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-mundial">
+        <div class="mundial-header">
+            <button id="btn-voltar" class="seta" style="visibility:hidden">&#8592;</button>
+            <h1 id="fase-titulo">FASE DE GRUPOS</h1>
+            <button id="btn-avancar" class="seta">&#8594;</button>
+        </div>
+        <div id="mundial-grupos" class="mundial-grupos"></div>
+        <div id="mundial-calendario" class="mundial-calendario"></div>
+        <div id="mundial-mata-mata" class="mundial-mata-mata" style="display:none;"></div>
+    </div>
+    <script src="/static/js/mundial.js"></script>
+</body>
+</html> 
