@@ -1,0 +1,678 @@
+body, html {
+    background: #f6f8fa;
+    color: #222;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container-mundial {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem 3.5rem 1rem;
+    position: relative;
+    overflow: visible;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mundial-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3.2rem;
+}
+
+.mundial-header h1 {
+    color: #222;
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.seta {
+    background: #fff;
+    border: 1.5px solid #006437;
+    color: #006437;
+    font-size: 2rem;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seta:disabled, .seta[style*="hidden"] {
+    opacity: 0.4;
+    cursor: default;
+}
+.seta:hover:not(:disabled) {
+    background: #006437;
+    color: #fff;
+}
+
+#mundial-grupos {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.bloco-grupo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border: none;
+    margin-bottom: 0;
+    padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+    gap: 2.2rem;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.bloco-grupo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+.grupo, .grupo-jogos {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.1rem 0.2rem 1.1rem 0.2rem;
+}
+
+.grupo h2, .rodada-titulo-ge {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.rodada-nav-ge {
+    margin-top: 0.2rem;
+}
+
+.tabela__classificacao-moderna {
+    width: 100%;
+    border-collapse: separate;
+    background: #fff;
+    font-size: 0.97rem;
+    margin-bottom: 1.2rem;
+    table-layout: auto;
+    border-radius: 10px;
+    overflow-x: auto;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    margin-left: 0;
+    padding: 0;
+    min-width: 0;
+    max-width: 100%;
+}
+.tabela__classificacao-moderna th, .tabela__classificacao-moderna td {
+    padding: 0.4rem 0.4rem;
+    border-bottom: 1px solid #e3e8ee;
+    font-size: 0.97rem;
+    text-align: center;
+}
+.tabela__classificacao-moderna th {
+    color: #1a237e;
+    font-weight: 700;
+    background: #fafdff;
+    border-bottom: 2px solid #e3e8ee;
+    text-align: center;
+    min-width: 36px;
+}
+.tabela__classificacao-moderna .posicao {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #1a237e;
+    background: #fafdff;
+    border-radius: 6px;
+}
+.tabela__classificacao-moderna .classificado {
+    background: #e3fbe8;
+    color: #0a7d3a;
+}
+.tabela__classificacao-moderna .time-nome {
+    text-align: left;
+    font-weight: 600;
+    color: #222;
+    font-size: 1.08rem;
+    padding-left: 0.3rem;
+    max-width: unset;
+    min-width: 120px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+.tabela__classificacao-moderna td {
+    min-width: 36px;
+}
+.tabela__classificacao-moderna .sigla {
+    color: #888;
+    font-size: 0.98em;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+.grupo-jogos {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 600px;
+    background: #fafdff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 2rem 1.5rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+.rodada-jogos {
+    display: flex;
+    flex-direction: row;
+    gap: 1.1rem;
+    margin-bottom: 0.2rem;
+    flex-wrap: wrap;
+}
+@media (max-width: 1100px) {
+  .bloco-grupo {
+    flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.7rem 0.2rem;
+    gap: 0.7rem;
+  }
+  .grupo, .grupo-jogos {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .rodada-jogos {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
+
+.calendario-jogo-ge {
+    background: #fff;
+    border: 1px solid #e3e8ee;
+    border-radius: 14px;
+    margin-bottom: 0;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    width: 100%;
+    max-width: 260px;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+.jogo-info-ge {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.2rem;
+}
+.jogo-local-ge {
+    color: #1a237e;
+    font-size: 1.01rem;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-bottom: 0.1rem;
+}
+.jogo-data-ge {
+    color: #888;
+    font-size: 0.97rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+.linha-jogo-ge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 100%;
+}
+.time-nome-ge {
+    color: #1a237e;
+    font-weight: 700;
+    font-size: 0.97rem;
+    min-width: 70px;
+    text-align: right;
+}
+.versus-ge {
+    color: #888;
+    font-weight: bold;
+    font-size: 1.35rem;
+    margin: 0 0.3rem;
+    text-align: center;
+}
+.placar-ge {
+    width: 32px;
+    height: 26px;
+    border: 1px solid #e3e8ee;
+    border-radius: 8px;
+    font-size: 0.97rem;
+    text-align: center;
+    background: #fafdff;
+    margin: 0 0.1rem;
+    font-weight: 700;
+}
+.placar-ge:focus {
+    border-color: #1a237e;
+    outline: none;
+}
+@media (max-width: 900px) {
+  .calendario-jogo-ge {
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.5rem 0.2rem 0.5rem 0.2rem;
+  }
+  .linha-jogo-ge {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .time-nome-ge {
+    min-width: 0;
+    text-align: center;
+  }
+}
+
+.calendario-jogo {
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ececec;
+    padding: 0.7rem 1rem 0.5rem 1rem;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 220px;
+    max-width: 260px;
+    flex: 1 1 220px;
+}
+
+.calendario-jogo .time-nome {
+    color: #222;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin: 0 0.5rem;
+}
+
+.versus {
+    color: #0056b3;
+    font-weight: bold;
+    margin: 0 0.5rem;
+}
+
+input[type="number"] {
+    width: 44px;
+    height: 32px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    text-align: center;
+    background: #fff;
+    margin: 0 0.2rem;
+}
+
+input[type="number"]:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.mata-mata-container {
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.09);
+    padding: 3.2rem;
+    border: 1.5px solid #e0e0e0;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.mata-mata-container h2 {
+    color: #006437;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.mata-mata-jogos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mata-mata-jogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f8f8;
+    border-radius: 12px;
+    border: 1.5px solid #e0e0e0;
+}
+
+.mata-mata-jogo .time-nome {
+    width: 200px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #222;
+    text-align: center;
+}
+
+.mata-mata-jogo input[type='number'] {
+    width: 60px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1.5px solid #b5b5b5;
+    border-radius: 8px;
+    background: #fff;
+    -moz-appearance: textfield;
+    position: relative;
+    z-index: 2;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mata-mata-jogo input[type='number']::-webkit-outer-spin-button,
+.mata-mata-jogo input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.mata-mata-jogo .versus {
+    font-weight: bold;
+    color: #006437;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 900px) {
+    .mata-mata-container {
+        padding: 1.7rem;
+    }
+    
+    .mata-mata-jogo .time-nome {
+        width: 120px;
+        font-size: 1.1rem;
+    }
+    
+    .mata-mata-jogo input[type='number'] {
+        width: 50px;
+        font-size: 1.1rem;
+    }
+}
+
+.linha-jogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.2rem;
+}
+
+.divisoria-grupo-ge {
+    width: 100%;
+    height: 1.5px;
+    background: #e0e0e0;
+    margin: 1.2rem 0 1.2rem 0;
+    border-radius: 1px;
+}
+
+.classificacao-ge-tabelas {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    min-width: 500px;
+}
+.tabela__equipes {
+    border-collapse: separate;
+    background: #fff;
+    min-width: 220px;
+    max-width: 260px;
+    width: 38%;
+    border-right: 1.5px solid #ececec;
+    table-layout: fixed;
+}
+.tabela__equipes th, .tabela__equipes td {
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    font-size: 1.05rem;
+    border-bottom: 1px solid #f3f3f3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tabela__equipes--com-borda {
+    border-radius: 10px 0 0 10px;
+    border-left: 1.5px solid #ececec;
+}
+.tabela__head--classificacao {
+    color: #111;
+    font-size: 1.08rem;
+    font-weight: 700;
+    background: #fff;
+    border-bottom: 1.5px solid #ececec;
+    text-align: left;
+    padding-left: 0.7rem;
+}
+.classificacao__equipes--posicao {
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 28px;
+    text-align: right;
+    color: #222;
+}
+.classificacao__tabela--linha .classificado {
+    color: #06aa48 !important;
+}
+.classificacao__equipes--nome {
+    font-weight: 700;
+    color: #111;
+    font-size: 1.05rem;
+    margin-right: 0.3rem;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.classificacao__equipes--sigla {
+    color: #555;
+    font-size: 0.92em;
+    margin-left: 0.4em;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.classificacao__equipes--variacao {
+    color: #bbb;
+    font-size: 0.95em;
+    text-align: center;
+    width: 24px;
+}
+.tabela__pontos {
+    border-collapse: separate;
+    background: #fff;
+    width: 62%;
+    min-width: 320px;
+    border-radius: 0 10px 10px 0;
+    table-layout: fixed;
+}
+.tabela__pontos th, .tabela__pontos td {
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    font-size: 1.05rem;
+    border-bottom: 1px solid #f3f3f3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tabela__pontos th {
+    color: #555;
+    font-weight: 600;
+    background: #fff;
+    border-bottom: 1.5px solid #ececec;
+}
+.classificacao__pontos--ponto {
+    font-weight: bold;
+    color: #111;
+}
+.classificacao__pontos--ultimos_jogos {
+    min-width: 40px;
+}
+@media (max-width: 900px) {
+  .classificacao-ge-tabelas {
+    flex-direction: column;
+    min-width: 0;
+  }
+  .tabela__equipes, .tabela__pontos {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+    border-right: none;
+    border-left: none;
+    table-layout: auto;
+  }
+  .tabela__pontos {
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+.tabela__classificacao-ge {
+    width: 100%;
+    border-collapse: separate;
+    background: #fff;
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    table-layout: fixed;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.tabela__classificacao-ge th, .tabela__classificacao-ge td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid #f3f3f3;
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tabela__classificacao-ge th {
+    color: #555;
+    font-weight: 600;
+    background: #fff;
+    border-bottom: 1.5px solid #ececec;
+    text-align: center;
+}
+.tabela__classificacao-ge .tabela__head--classificacao {
+    color: #111;
+    font-size: 1.08rem;
+    font-weight: 700;
+    background: #fff;
+    border-bottom: 1.5px solid #ececec;
+    text-align: left;
+    padding-left: 0.7rem;
+}
+.classificacao__equipes--posicao {
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 32px;
+    text-align: right;
+    color: #222;
+}
+.classificado {
+    color: #06aa48 !important;
+}
+.classificacao__equipes--time {
+    text-align: left;
+    font-weight: 700;
+    color: #111;
+    font-size: 1.05rem;
+    max-width: 220px;
+    min-width: 120px;
+}
+.classificacao__equipes--nome {
+    font-weight: 700;
+    color: #111;
+    font-size: 1.05rem;
+    margin-right: 0.3rem;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.classificacao__equipes--sigla {
+    color: #555;
+    font-size: 0.92em;
+    margin-left: 0.4em;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.classificacao__pontos--ponto {
+    font-weight: bold;
+    color: #111;
+    text-align: center;
+}
+.classificacao__pontos {
+    text-align: center;
+}
+.classificacao__pontos--ultimos_jogos {
+    min-width: 40px;
+}
+@media (max-width: 900px) {
+  .tabela__classificacao-ge {
+    font-size: 0.97rem;
+    min-width: 0;
+    max-width: 100%;
+    table-layout: auto;
+  }
+  .classificacao__equipes--time {
+    max-width: 100px;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 700px) {
+  .grupo {
+    min-width: 0;
+    max-width: 100%;
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+  }
+  .tabela__classificacao-moderna {
+    font-size: 0.93rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+} 

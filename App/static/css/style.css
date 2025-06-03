@@ -1,0 +1,199 @@
+:root {
+    --primary-color: #006437;
+    --secondary-color: #FFD700;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+#btnSortear {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#btnSortear:hover {
+    background-color: #004d2a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+}
+
+#btnSortear:active {
+    transform: translateY(0);
+}
+
+.confrontos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.confrontos.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.confronto-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.confronto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.confronto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.confronto-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background-color: rgba(0,100,55,0.05);
+    border-radius: 5px;
+}
+
+.vs {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.vs::before,
+.vs::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.vs::before {
+    left: 0;
+}
+
+.vs::after {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .confrontos {
+        grid-template-columns: 1fr;
+    }
+}
+
+.torneio-selector {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.torneio-selector select {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #2c3e50;
+    border-radius: 5px;
+    background-color: white;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.torneio-selector select:hover {
+    border-color: #3498db;
+}
+
+.torneio-selector select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
